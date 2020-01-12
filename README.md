@@ -3,26 +3,6 @@
 A number of custom shaders for modding the game [The End is Nigh](https://store.steampowered.com/app/583470/The_End_Is_Nigh/),
 by Edmund McMillen and [Tyler Glaiel](https://github.com/tylerglaiel).
 
-## Shader List
-
-* 8-Bit
-* 8-Bit Lighting
-* Camera Scroll (Experimental)
-* Chromatic
-* Chromatic Pulse
-* Lava Glow Lighting Heatwave
-* Lava Glow Lighting
-* Lava Glow Heatwave
-* Lava Glow
-* Static Pixelate
-* Static Pixelate Pulse
-* Pixelate
-* Pixelate Pulse
-* Vertical Flip
-* Color Pulse
-* Screenshake
-* Red Alert
-
 ## Shaders
 
 ### 8-Bit
