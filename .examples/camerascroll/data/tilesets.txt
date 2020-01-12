@@ -1,0 +1,47 @@
+1 {
+    area_name "The End"
+    area_label_frame 1
+
+    tile_graphics Tilecity
+    overlay_graphics Overlayscity
+    background_graphics bg2
+    foreground_graphics fg1
+
+    palette 1
+
+    music [danse_intro.ogg, danse_loop.ogg]
+    ambience rain.ogg
+
+    music_volume 1
+    ambience_volume 1
+
+    global_particle_1 fgrain
+    global_particle_2 bgrain
+
+    tile_particle_1 drip
+    tile_particle_2 splash
+
+    npc_1 NPC0
+    npc_2 NPC1
+    npc_3 NPC2
+
+    decoration_1 Decoration0
+    decoration_2 Decoration1
+    decoration_3 inst10
+
+    area_type normal
+
+    1 {
+        area_name "none"
+        area_label_frame 0
+    }
+
+    0 {
+        area_name "none"
+        area_label_frame 0
+
+        npc_1 NPCH4
+    }
+
+    art_alts [[Floater, Ghost]]
+}
