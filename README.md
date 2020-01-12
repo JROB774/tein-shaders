@@ -273,11 +273,11 @@ midfx_layer 2
 `redalert.shader`
 
 Shakes the screen in random directions, pulses to the color red, and performs
-a slight chromatic aberration during the pulse. Simulating some form of danger/
-red alert. To change the intensity of the shake go into the shader's code and
-edit the `shake_intensity` variable. `pulse_color` changes the color that will
-be pulsed to (instead of red), and `chromatic_intensity` controls the intensity
-of the chromatic aberration.
+a slight chromatic aberration during the pulse. Simulating some form of
+danger/red alert. To change the intensity of the shake go into the shader's code
+and edit the `shake_intensity` variable. `pulse_color` changes the color that
+will be pulsed to (instead of red), and `chromatic_intensity` controls the
+intensity of the chromatic aberration.
 
 Note this shader also applies the default lighting shader.
 
