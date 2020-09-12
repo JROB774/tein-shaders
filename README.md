@@ -6,36 +6,122 @@ to create unique looking worlds and levels, with a variety of different effects.
 
 A complete list of all the shaders with links to more info on their effects:
 
-| Name                                    | File                              | Description |
-| :-------------------------------------- | :-------------------------------- | :---------- |
-| 8-Bit                                   | 8bit.shader                       |             |
-| 8-Bit with Lighting                     | 8bit_lighting.shader              |             |
-| Scrolling Camera                        | camerascroll.shader               |             |
-| Chromatic Aberration                    | chromatic.shader                  |             |
-| Chromatic Aberration with Pulse         | chromatic_pulse.shader            |             |
-| Color Change with Pulse                 | colorpulse.shader                 |             |
-| Glowing Lava                            | lavaglow.shader                   |             |
-| Glowing Lava with Heatwave              | lavaglow_heatwave.shader          |             |
-| Glowing Lava with Lighting              | lavaglow_lighting.shader          |             |
-| Glowing Lava with Heatwave and Lighting | lavaglow_lighting_heatwave.shader |             |
-| Pixelate                                | pixelate.shader                   |             |
-| Pixelate with Pulse                     | pixelate_pulse.shader             |             |
-| Red Alert                               | redalert.shader                   |             |
-| Screenshake                             | screenshake.shader                |             |
-| Static Pixelation                       | staticpixel.shader                |             |
-| Static Pixelation with Pulse            | staticpixel_pulse.shader          |             |
-| Vertical Flip                           | verticalflip.shader               |             |
-
+| Name                                                                                | File                              |
+| :---------------------------------------------------------------------------------- | :-------------------------------- |
+| [8-Bit](#8-bit)                                                                     | 8bit.shader                       |
+| [8-Bit with Lighting](#8-bit-with-lighting)                                         | 8bit_lighting.shader              |
+| [Scrolling Camera](#scrolling-camera)                                               | camerascroll.shader               |
+| [Chromatic Aberration](#chromatic-aberration)                                       | chromatic.shader                  |
+| [Chromatic Aberration with Pulse](#chromatic-abberation-with-pulse)                 | chromatic_pulse.shader            |
+| [Color Change with Pulse](#color-change-with-pulse)                                 | colorpulse.shader                 |
+| [Glowing Lava](#glowing-lava)                                                       | lavaglow.shader                   |
+| [Glowing Lava with Heatwave](#glowing-lava-with-heatwave)                           | lavaglow_heatwave.shader          |
+| [Glowing Lava with Lighting](#glowing-lava-with-lighting)                           | lavaglow_lighting.shader          |
+| [Glowing Lava with Heatwave and Lighting](#glowing-lava-with-lighting-and-heatwave) | lavaglow_lighting_heatwave.shader |
+| [Pixelate](#pixelate)                                                               | pixelate.shader                   |
+| [Pixelate with Pulse](#pixelate-with-pulse)                                         | pixelate_pulse.shader             |
+| [Red Alert](#red-alert)                                                             | redalert.shader                   |
+| [Screenshake](#screenshake)                                                         | screenshake.shader                |
+| [Static Pixelation](#static-pixelation)                                             | staticpixel.shader                |
+| [Static Pixelation with Pulse](#static-pixelation-with-pulse)                       | staticpixel_pulse.shader          |
+| [Vertical Flip](#vertical-flip)                                                     | verticalflip.shader               |
 
 ## 8-Bit
 
+Limits the visible color range to create an 8-bit color palette effect.
+
+**Variables:**
+| Name                | Type  | Value                                         |
+| :------------------ | :---- | :-------------------------------------------- |
+| resolution          | float | The resolution of the color range.            |
+| saturation          | float | The saturation of the resulting colors.       |
+| mosaic_size         | vec2  | How large the on-screen pixels should be.     |
+
+**Tileset:**
+```
+fx_shader_mid 8bit
+midfx_graphics ShadeBox
+midfx_layer 2
+```
+
 ## 8-Bit with Lighting
+
+Limits the visible color range to create an 8-bit color palette effect.
+
+This shader also applies the lighting effect.
+
+**Variables:**
+| Name                | Type  | Value                                         |
+| :------------------ | :---- | :-------------------------------------------- |
+| light_color         | vec4  | Color of light above and on top of water.     |
+| light_distance      | float | How far the glowing light will travel.        |
+| light_resolution    | vec2  | The resolution of the lighting pixels.        |
+| glow_strength       | float | How strong the glow effect should be.         |
+| resolution          | float | The resolution of the color range.            |
+| saturation          | float | The saturation of the resulting colors.       |
+| mosaic_size         | vec2  | How large the on-screen pixels should be.     |
+
+**Tileset:**
+```
+fx_shader_mid 8bit_lighting
+midfx_graphics ShadeBox
+midfx_layer 2
+```
 
 ## Scrolling Camera
 
+Roughly simulate a camera that follows the player around the level.
+
+**How to Use:**
+* Place the shader in the `shaders` folder and rename it `colormapped.shader`.
+* Create a new level and set the camera bounds to be the size you want your
+  scrolling camera to be *(not the size of the play area like usual)*.
+* Make sure the camera bounds are out of the way of the level, otherwise there
+  will be ugly GUI elements stuck on the screen.
+* Always place the camera bounds to the bottom right of the play area so that
+  the player will not be killed for "being off-screen".
+* Use the editor to create levels bigger than 54x32 if need be to ensure the
+  above two camera bounds rules can be met.
+
+**Known Issues:**
+* GUI elements will not be visible when playing like this (tumor count, level
+  name, etc.) due to the camera bounds being fixed off-screen.
+* Most shaders are not compatible with the scrolling camera so it is best to
+  avoid applying `fx_shader` and `fx_shader_mid` to `tilesets.txt`.
+* The scrolling camera is global and cannot be turned off for specific levels
+  or area; it will apply to the entire game.
+
 ## Chromatic Aberration
 
+Applies a chromatic aberration effect (splits the color channels).
+
+**Variables:**
+| Name                | Type  | Value                                         |
+| :------------------ | :---- | :-------------------------------------------- |
+| intensity           | vec2  | The intensity of the chromatic aberration.    |
+
+**Tileset:**
+```
+fx_shader_mid chromatic
+midfx_graphics SolidBox
+midfx_layer 2
+```
+
 ## Chromatic Aberration with Pulse
+
+Pulses in and out of a chromatic aberration effect (splits the color channels).
+
+**Variables:**
+| Name                | Type  | Value                                         |
+| :------------------ | :---- | :-------------------------------------------- |
+| intensity           | vec2  | The intensity of the chromatic aberration.    |
+
+**Tileset:**
+```
+fx_shader_mid chromatic_pulse
+midfx_graphics SolidBox
+midfx_layer 2
+```
 
 ## Color Change with Pulse
 
@@ -57,15 +143,104 @@ midfx_layer 2
 
 ## Glowing Lava
 
+Applies an extremely intense glowing effect to lava.
+
+**Variables:**
+| Name                | Type  | Value                                         |
+| :------------------ | :---- | :-------------------------------------------- |
+| light_color         | vec4  | Color of light above and on top of water.     |
+| light_distance      | float | How far the lighting will travel.             |
+| glow_color          | vec4  | Color that white parts glow when near water.  |
+| glow_strength       | float | How strong the glow effect should be.         |
+| glow_threshold      | float | Green channel threshold to trigger glowing.   |
+| glow_distance       | float | How far the glowing will travel.              |
+| overexpose          | float | How much fully bright objects bleed.          |
+
+**Tileset:**
+```
+fx_shader lavaripples
+fx_shader_mid lavaglow
+midfx_graphics ShadeBox
+midfx_layer 2
+```
+
 ## Glowing Lava with Heatwave
+
+Applies an extremely intense glowing effect to lava.
+
+This shader also applies the heatwave effect.
+
+**Variables:**
+| Name                | Type  | Value                                         |
+| :------------------ | :---- | :-------------------------------------------- |
+| light_color         | vec4  | Color of light above and on top of water.     |
+| light_distance      | float | How far the lighting will travel.             |
+| glow_color          | vec4  | Color that white parts glow when near water.  |
+| glow_threshold      | float | Green channel threshold to trigger glowing.   |
+| glow_distance       | float | How far the glowing will travel.              |
+| overexpose          | float | How much fully bright objects bleed.          |
+
+**Tileset:**
+```
+fx_shader lavaripples
+fx_shader_mid lavaglow_heatwave
+midfx_graphics ShadeBox
+midfx_layer 2
+```
 
 ## Glowing Lava with Lighting
 
+Applies an extremely intense glowing effect to lava.
+
+This shader also applies the lighting effect.
+
+**Variables:**
+| Name                | Type  | Value                                         |
+| :------------------ | :---- | :-------------------------------------------- |
+| light_color         | vec4  | Color of light above and on top of water.     |
+| light_distance      | float | How far the lighting will travel.             |
+| glow_color          | vec4  | Color that white parts glow when near water.  |
+| glow_strength       | float | How strong the glow effect should be.         |
+| glow_threshold      | float | Green channel threshold to trigger glowing.   |
+| glow_distance       | float | How far the glowing will travel.              |
+| overexpose          | float | How much fully bright objects bleed.          |
+
+**Tileset:**
+```
+fx_shader lavaripples
+fx_shader_mid lavaglow_lighting
+midfx_graphics ShadeBox
+midfx_layer 2
+```
+
 ## Glowing Lava with Heatwave and Lighting
+
+Applies an extremely intense glowing effect to lava.
+
+This shader also applies the heatwave and lighting effects.
+
+**Variables:**
+| Name                | Type  | Value                                         |
+| :------------------ | :---- | :-------------------------------------------- |
+| light_color         | vec4  | Color of light above and on top of water.     |
+| light_distance      | float | How far the lighting will travel.             |
+| glow_color          | vec4  | Color that white parts glow when near water.  |
+| glow_strength       | float | How strong the glow effect should be.         |
+| glow_threshold      | float | Green channel threshold to trigger glowing.   |
+| glow_distance       | float | How far the glowing will travel.              |
+| overexpose          | float | How much fully bright objects bleed.          |
+
+**Tileset:**
+```
+fx_shader lavaripples
+fx_shader_mid lavaglow_lighting_heatwave
+midfx_graphics ShadeBox
+midfx_layer 2
+```
 
 ## Pixelate
 
-Pixelates the entire screen.
+Pixelates the screen.
 
 **Variables:**
 | Name                | Type  | Value                                         |
@@ -81,7 +256,7 @@ midfx_layer 2
 
 ## Pixelate with Pulse
 
-Pulses in and out of pixelating the entire screen.
+Pulses in and out of pixelating the screen.
 
 **Variables:**
 | Name                | Type  | Value                                         |
@@ -143,7 +318,7 @@ midfx_layer 2
 ## Static Pixelation
 
 Performs a slight chromatic aberration effect as well as a static effect whilst
-pixelating the entire screen.
+pixelating the screen.
 
 **Variables:**
 | Name                | Type  | Value                                         |
@@ -161,7 +336,7 @@ midfx_layer 2
 ## Static Pixelation with Pulse
 
 Pulses in and out of performing a slight chromatic aberration effect as well as
-a static effect whilst pixelating the entire screen.
+a static effect whilst pixelating the screen.
 
 **Variables:**
 | Name                | Type  | Value                                         |
@@ -179,7 +354,7 @@ midfx_layer 2
 
 ## Vertical Flip
 
-Flips the entire screen upside down (does not effect GUI elements).
+Flips the screen upside down (does not effect GUI elements).
 
 **Tileset:**
 ```
