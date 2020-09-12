@@ -13,7 +13,7 @@ varying vec2 worldPos;
 const float min_pixel_density = 100.0; // the minimum pixel density (smaller the number the larger the pixels)
 const float max_pixel_density = 512.0; // the maximum pixel density (larger the number the smaller the pixels)
 
-const vec2 intensity = vec2(0.005, 0.005); // change intensity of the chromatic abberation in the x and y directions
+const vec2 chromatic_intensity = vec2(0.005, 0.005); // change intensity of the chromatic abberation in the x and y directions
 
 #if COMPILING_VERTEX_PROGRAM
 
@@ -60,7 +60,7 @@ void frag()
 
     vec2 color_coord = vec2(dx * floor(screencoords.x / dx), dy * floor(screencoords.y / dy));
 
-    vec2 pulse = vec2(sin_range(intensity.x, 0.0, time_value), sin_range(intensity.y, 0.0, time_value));
+    vec2 pulse = vec2(sin_range(chromatic_intensity.x, 0.0, time_value), sin_range(chromatic_intensity.y, 0.0, time_value));
 
     vec2 r_offset = vec2( pulse.x,      0.0);
     vec2 g_offset = vec2(     0.0, -pulse.y);

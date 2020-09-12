@@ -11,7 +11,7 @@ uniform vec2 playerPos;
 varying vec2 worldPos;
 
 const float pixel_density = 256.0; // the pixel density (smaller the number the larger the pixels)
-const vec2 intensity = vec2(0.005, 0.005); // change intensity of the chromatic abberation in the x and y directions
+const vec2 chromatic_intensity = vec2(0.005, 0.005); // change intensity of the chromatic abberation in the x and y directions
 
 #if COMPILING_VERTEX_PROGRAM
 
@@ -52,9 +52,9 @@ void frag()
 
     vec2 color_coord = vec2(dx * floor(screencoords.x / dx), dy * floor(screencoords.y / dy));
 
-    vec2 r_offset = vec2( intensity.x,          0.0);
-    vec2 g_offset = vec2(         0.0, -intensity.y);
-    vec2 b_offset = vec2(-intensity.x,          0.0);
+    vec2 r_offset = vec2( chromatic_intensity.x,                    0.0);
+    vec2 g_offset = vec2(                   0.0, -chromatic_intensity.y);
+    vec2 b_offset = vec2(-chromatic_intensity.x,                    0.0);
 
     vec4 outcolor;
 

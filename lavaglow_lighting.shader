@@ -26,12 +26,12 @@ varying vec2 screencoords;
 varying vec2 ratio;
 
 const vec4  light_color = vec4(1.0, 0.33, 0.0, 0.8); // r, g, b, a. the gradient light that is above (and on top) of the water
+const float light_distance = 1.5;                    // less = farther distance
 const vec4  glow_color = vec4(1.0, 0.80, 0.0, 0.0);  // alpha is unused here. the color that white parts glow when near water
 const float glow_strength = 24;                      // how strong the glow effect is
 const float glow_threshold = 0.00;                   // how bright the green channel needs to be to trigger a glow
 const float glow_distance = .0015;                   // size of the glow
 const float overexpose = 0.25;                       // colors more than full bright bleed into other channels to make stuff whiter
-const float light_distance = 1.5;                    // less = farther distance
 
 #if COMPILING_VERTEX_PROGRAM
 

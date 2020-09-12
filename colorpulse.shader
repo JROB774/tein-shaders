@@ -10,8 +10,8 @@ uniform float timer;
 varying vec2 worldPos;
 
 const vec4  pulse_color = vec4(1,0,0,1); // the color to pulse to
-const float max_color_intensity = 0.75;  // how close to the desired color the pulse will get
 const float pulse_speed = 4.0;           // the speed at which to pulse (lower = slower)
+const float max_color_intensity = 0.75;  // how close to the desired color the pulse will get
 
 #if COMPILING_VERTEX_PROGRAM
 

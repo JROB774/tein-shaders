@@ -23,11 +23,11 @@ varying vec2 worldPos;
 
 const vec4  light_color = vec4(1, 1, 1, 0.5);    // r, g, b, a. the gradient light that is above (and on top) of the water
 const float light_distance = 4.0;                // less = farther distance
+const vec2  light_resolution = vec2(0.25, 0.25); // the resolution of lighting (smaller = larger on-screen pixels)
 const float glow_strength = 0.5;                 // the strength of glowing objects
 const float resolution = 10.0;                   // the resolution of the selected colors (lower = more limited)
 const float saturation = 1.5;                    // how saturated the resulting colors should be
 const vec2  mosaic_size = vec2(400.0, 400.0);    // the smaller the number the larger the on-screen pixels
-const vec2  light_resolution = vec2(0.25, 0.25); // the resolution of lighting (smaller = larger on-screen pixels)
 
 #if COMPILING_VERTEX_PROGRAM
 

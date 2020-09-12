@@ -25,8 +25,8 @@ const vec4  light_color = vec4(1,1,1,0.5);            // the gradient light that
 const float light_distance = 4;                       // less = farther distance
 const float glow_strength = 0.5;                      // how strong the glow effect is
 const vec4  pulse_color = vec4(1,0,0,1);              // the color to pulse to
-const float max_color_intensity = 0.75;               // how close to the desired color the pulse will get
 const float pulse_speed = 4.0;                        // the speed at which to pulse (lower = slower)
+const float max_color_intensity = 0.75;               // how close to the desired color the pulse will get
 const vec2  chromatic_intensity = vec2(0.003, 0.003); // the intensity of the chromatic abberation in the x and y directions
 const float shake_speed = 20;                         // the speed at which to shake the screen (lower = slower)
 const vec2  shake_intensity = vec2(0.05, 0.05);       // the intensity of the screen shake in the x and y directions
