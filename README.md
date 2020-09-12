@@ -74,22 +74,16 @@ Roughly simulate a camera that follows the player around the level.
 
 **How to Use:**
 * Place the shader in the `shaders` folder and rename it `colormapped.shader`.
-* Create a new level and set the camera bounds to be the size you want your
-  scrolling camera to be *(not the size of the play area like usual)*.
-* Make sure the camera bounds are out of the way of the level, otherwise there
-  will be ugly GUI elements stuck on the screen.
-* Always place the camera bounds to the bottom right of the play area so that
-  the player will not be killed for "being off-screen".
-* Use the editor to create levels bigger than 54x32 if need be to ensure the
-  above two camera bounds rules can be met.
+* Create a new level and set the camera bounds to be the size you want your scrolling camera to be.
+* Make sure the camera bounds are completely outside of the actual level area.
+* Place the camera bounds to the bottom-right so the player doesn't die for being off-screen.
+* Use the level editor to create large enough levels to fulfill these requirements.
 
 **Known Issues:**
-* GUI elements will not be visible when playing like this (tumor count, level
-  name, etc.) due to the camera bounds being fixed off-screen.
-* Most shaders are not compatible with the scrolling camera so it is best to
-  avoid applying `fx_shader` and `fx_shader_mid` to `tilesets.txt`.
-* The scrolling camera is global and cannot be turned off for specific levels
-  or area; it will apply to the entire game.
+* User interface elements will not be visible when playing like this.
+* Most shaders are not compatible with the scrolling camera.
+* The scrolling camera is global and cannot be turned off for specific levels.
+* There are some issues with scrolling and it is not always reliable.
 
 ## Chromatic Aberration
 
